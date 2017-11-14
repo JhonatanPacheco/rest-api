@@ -1,13 +1,20 @@
 
-create table cities(
-	id int primary key auto_increment not null,
-	name varchar(100) null
-);
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `last_login` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create table forecast(
-	id int primary key auto_increment not null,
-	forecast varchar(100) null,
-	`date` datetime null,
-	id_city int not null,
-	foreign key (id) references cities(id)
-);
+
+CREATE TABLE `users_authentication` (
+  `id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expired_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
